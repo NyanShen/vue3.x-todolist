@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <todo-header></todo-header>
+    <todo-main></todo-main>
+    <todo-footer></todo-footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { defineComponent } from "vue";
+import TodoMain from "@/components/todo/TodoMain.vue";
+import TodoHeader from "@/components/todo/TodoHeader.vue";
+import TodoFooter from "@/components/todo/TodoFooter.vue";
 
-export default {
-  name: 'Home',
+export default defineComponent({
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    TodoMain,
+    TodoHeader,
+    TodoFooter,
+  },
+});
 </script>
