@@ -77,7 +77,7 @@
       </div>
       <div class="menu-box">
         <ul>
-          <li class="menu-item">
+          <li class="menu-item" @click="navigateTo('/baseStudentInput')">
             <img src="../assets/images/menu08.png" alt="" />
             <p>学员</p>
           </li>
@@ -93,7 +93,7 @@
             <img src="../assets/images/menu09.png" alt="" />
             <p>课程</p>
           </li>
-          <li class="menu-item">
+          <li class="menu-item" @click="navigateTo('/classList')">
             <img src="../assets/images/menu01.png" alt="" />
             <p>班级</p>
           </li>
@@ -134,6 +134,11 @@ export default defineComponent({
   components: {
     [Button.name]: Button,
     [Icon.name]: Icon,
+  },
+  methods: {
+    navigateTo(pageName) {
+      this.$router.push(pageName);
+    },
   },
 });
 </script>
