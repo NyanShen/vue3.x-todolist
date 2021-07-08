@@ -4,7 +4,7 @@
       <div class="form-item">
         <van-cell-group inset class="input-group">
           <van-field
-            v-model="value"
+            v-model="state.name"
             label="姓名"
             required
             placeholder="输入框内容右对齐"
@@ -15,7 +15,7 @@
       <div class="form-flex" style="margin-top: 26px">
         <label class="form-label">
           <span>*</span>
-          性别{{currentName}}
+          性别{{ currentName }}
         </label>
         <van-radio-group v-model="checked" direction="horizontal">
           <van-radio name="1">男</van-radio>
@@ -89,7 +89,9 @@
     <div>
       <div class="footer-holder"></div>
       <div class="module-footer">
-        <van-button class="btn" round type="primary">登记</van-button>
+        <van-button class="btn" round type="primary" @click="register"
+          >登记</van-button
+        >
       </div>
     </div>
     <van-popup
@@ -144,6 +146,7 @@ import { ref, reactive } from "vue";
 import { defineComponent } from "vue";
 import moment from "moment";
 import ContactRelation from "../../components/ContactRelation.vue";
+import { phoneValidation } from "../../utils/validator";
 
 export default defineComponent({
   name: "Me",
@@ -165,6 +168,7 @@ export default defineComponent({
     const showRelative = ref(false);
     const checked = ref("1");
     const state = reactive({
+      name: "",
       phone: "",
       birthDate: "",
       classGrate: "",
@@ -221,7 +225,7 @@ export default defineComponent({
     const selectRelative = (index) => {
       toggleShowRelative(true);
       contactIndex.value = index;
-      currentName.value = contactList[index].name
+      currentName.value = contactList[index].name;
     };
 
     const changeRelative = (relative) => {
@@ -263,6 +267,27 @@ export default defineComponent({
     deleteContactPerson(index) {
       let self = this;
       self.contactList.splice(index, 1);
+    },
+    register() {
+      let self = this;
+      if (!self.state.name) {
+        self.$toast("请输入学员姓名");
+        return;
+      }
+      if (!self.state.classGrate) {
+        self.$toast("请选择当前公立年级");
+        return;
+      }
+      let validates = [];
+      for (const item of self.contactList) {
+        if (phoneValidation(item.phone)) {
+          validates.push(item);
+        }
+      }
+      if (validates.length > 0) {
+        self.$toast("联系方式有误，请核查填写内容");
+        return;
+      }
     },
   },
 });
