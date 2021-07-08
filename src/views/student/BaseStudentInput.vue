@@ -89,9 +89,9 @@
     <div>
       <div class="footer-holder"></div>
       <div class="module-footer">
-        <van-button class="btn" round type="primary" @click="register"
-          >登记</van-button
-        >
+        <van-button class="btn" round type="primary" @click="register">
+          登记
+        </van-button>
       </div>
     </div>
     <van-popup

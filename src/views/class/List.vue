@@ -1,15 +1,35 @@
 <template>
   <div>
     <div class="search-box">
-      <div class="search-content">
+      <div class="search-content" v-if="!showSearch">
         <div class="xq-show">
           <span>全部校区</span>
           <van-icon name="arrow-down" color="#666" />
         </div>
         <div class="search-body">
-          <van-icon name="search" color="#333" />
+          <van-icon
+            name="search"
+            color="#333"
+            @click="toggleShowSearch(true)"
+          />
         </div>
-        <van-icon name="filter-o" color="#333" />
+        <van-icon
+          name="filter-o"
+          color="#333"
+          @click="toggleShowFilter(true)"
+        />
+      </div>
+      <div class="search-class" v-if="showSearch">
+        <form action="/">
+          <van-search
+            v-model="searchKey"
+            show-action
+            shape="round"
+            placeholder="请输入班级名称"
+            @search="onSearch"
+            @cancel="toggleShowSearch(false)"
+          />
+        </form>
       </div>
     </div>
     <div class="empty-container">
@@ -22,18 +42,41 @@
         <van-button class="btn" round type="primary">新增班级</van-button>
       </div>
     </div>
+    <select-filter :showMode="showFilter" @close="toggleShowFilter(false)" />
   </div>
 </template>
 
 <script>
-import { Button, Icon } from "vant";
-import { defineComponent } from "vue";
+import { Button, Icon, Search } from "vant";
+import { defineComponent, ref } from "vue";
+import SelectFilter from "../../components/SelectFilter.vue";
 
 export default defineComponent({
   name: "Me",
   components: {
+    SelectFilter,
     [Button.name]: Button,
+    [Search.name]: Search,
     [Icon.name]: Icon,
+  },
+  setup() {
+    const searchKey = ref("");
+    const showFilter = ref(false);
+    const showSearch = ref(false);
+
+    const toggleShowFilter = (value) => {
+      showFilter.value = value;
+    };
+    const toggleShowSearch = (value) => {
+      showSearch.value = value;
+    };
+    return {
+      searchKey,
+      showFilter,
+      showSearch,
+      toggleShowFilter,
+      toggleShowSearch,
+    };
   },
 });
 </script>
