@@ -4,8 +4,8 @@
       <div class="bench-useful">
         <div class="title">常用功能</div>
         <div class="icons">
-            <img src="../assets/images/menu08.png" alt="" />
-            <img src="../assets/images/menu08.png" alt="" />
+          <img src="../assets/images/menu04.png" alt="" />
+          <img src="../assets/images/menu05.png" alt="" />
         </div>
         <van-button class="edit-btn" round size="sm"> 编辑 </van-button>
       </div>
@@ -14,24 +14,32 @@
         <div class="menu-box">
           <ul>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu05.png" alt="" />
+              <p>报名收费</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu03.png" alt="" />
+              <p>费用预存</p>
             </li>
             <li class="menu-item">
               <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <p>费用结转</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu05.png" alt="" />
+              <p>费用预警</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu04.png" alt="" />
+              <p>退费</p>
             </li>
             <li class="menu-item">
               <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <p>在读学员导入</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
-            </li>
-            <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu06.png" alt="" />
+              <p>招生工具</p>
             </li>
           </ul>
         </div>
@@ -41,16 +49,24 @@
         <div class="menu-box">
           <ul>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu02.png" alt="" />
+              <p>课程</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu01.png" alt="" />
+              <p>班级</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu07.png" alt="" />
+              <p>排班</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu02.png" alt="" />
+              <p>课表</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu09.png" alt="" />
+              <p>家长端</p>
             </li>
           </ul>
         </div>
@@ -60,16 +76,16 @@
         <div class="menu-box">
           <ul>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu06.png" alt="" />
+              <p>点评</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu02.png" alt="" />
+              <p>作业</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/s-01.png" alt="" />
+              <p>签到</p>
             </li>
           </ul>
         </div>
@@ -79,16 +95,20 @@
         <div class="menu-box">
           <ul>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu07.png" alt="" />
+              <p>订单管理</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu04.png" alt="" />
+              <p>退费记录</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu05.png" alt="" />
+              <p>资金管理</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu07.png" alt="" />
+              <p>数据报表</p>
             </li>
           </ul>
         </div>
@@ -98,23 +118,27 @@
         <div class="menu-box">
           <ul>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/avt-00.png" alt="" />
+              <p>员工</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu01.png" alt="" />
+              <p>教室</p>
             </li>
             <li class="menu-item">
-              <img src="../assets/images/menu08.png" alt="" />
-              <p>学员</p>
+              <img src="../assets/images/menu06.png" alt="" />
+              <p>定价维度</p>
+            </li>
+            <li class="menu-item">
+              <img src="../assets/images/menu09.png" alt="" />
+              <p>消息推送</p>
             </li>
           </ul>
         </div>
       </div>
       <div class="bench-more">
-          <span>更多功能</span>
-          <van-icon name="arrow" color="#1989fa" />
+        <span>更多功能</span>
+        <van-icon name="arrow" color="#1989fa" />
       </div>
     </div>
   </div>
