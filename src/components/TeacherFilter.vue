@@ -71,7 +71,7 @@ export default defineComponent({
   },
   setup(props, context) {
     const searchKey = ref("");
-    const teacherIndex = ref(0);
+    const teacherIndex = ref(null);
     const teachers = reactive(["老师54036"]);
 
     const changeTeacher = (index) => {
@@ -85,7 +85,7 @@ export default defineComponent({
       context.emit("close", false);
     };
     const confirmTeacher = () => {
-      context.emit("confirm", teachers[teacherIndex]);
+      context.emit("confirm", teachers[teacherIndex.value]);
       context.emit("close", false);
     };
     return {

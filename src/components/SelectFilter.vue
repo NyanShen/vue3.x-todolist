@@ -10,14 +10,14 @@
         <div class="flex-item" @click="toggleShowSchool(true)">
           <label class="label">校区</label>
           <div class="value">
-            <span></span>
+            <span>{{ state.school }}</span>
             <van-icon name="arrow" />
           </div>
         </div>
         <div class="flex-item" @click="toggleShowTeacher(true)">
           <label class="label">老师</label>
           <div class="value">
-            <span></span>
+            <span>{{ state.teacher }}</span>
             <van-icon name="arrow" />
           </div>
         </div>
@@ -52,8 +52,16 @@
         </div>
       </div>
     </van-popup>
-    <school-filter :showMode="showSchool" @close="toggleShowSchool" />
-    <teacher-filter :showMode="showTeacher" @close="toggleShowTeacher" />
+    <school-filter
+      :showMode="showSchool"
+      @close="toggleShowSchool"
+      @confirm="confirmSchool"
+    />
+    <teacher-filter
+      :showMode="showTeacher"
+      @close="toggleShowTeacher"
+      @confirm="confirmTeacher"
+    />
   </div>
 </template>
 
@@ -83,6 +91,11 @@ export default defineComponent({
     const showSchool = ref(false);
     const showTeacher = ref(false);
     const classStatuses = reactive(["未结业", "已结业"]);
+    const state = reactive({
+      teacher: "",
+      school: "",
+      status: "",
+    });
     const changeStatus = (index) => {
       statusIndex.value = index;
     };
@@ -91,6 +104,8 @@ export default defineComponent({
     };
     const cancel = () => {
       statusIndex.value = null;
+      state.school = '';
+      state.teacher = '';
     };
     const toggleShowSchool = (value) => {
       showSchool.value = value;
@@ -99,9 +114,25 @@ export default defineComponent({
       showTeacher.value = value;
     };
     const confirmFilter = () => {
+      context.emit("confirm", state);
       context.emit("close", false);
     };
+    const confirmSchool = (value) => {
+      if (value) {
+        state.school = value;
+      } else {
+        state.school = "";
+      }
+    };
+    const confirmTeacher = (value) => {
+      if (value) {
+        state.teacher = value;
+      } else {
+        state.teacher = "";
+      }
+    };
     return {
+      state,
       statusIndex,
       classStatuses,
       changeStatus,
@@ -112,6 +143,8 @@ export default defineComponent({
       cancel,
       closeMode,
       confirmFilter,
+      confirmSchool,
+      confirmTeacher,
     };
   },
   methods: {},

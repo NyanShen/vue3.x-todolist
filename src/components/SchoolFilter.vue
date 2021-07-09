@@ -62,7 +62,7 @@ export default defineComponent({
     },
   },
   setup(props, context) {
-    const schoolIndex = ref(0);
+    const schoolIndex = ref(null);
     const schools = reactive(["总部校区"]);
 
     const changeSchool = (index) => {
@@ -76,7 +76,7 @@ export default defineComponent({
       context.emit("close", false);
     };
     const confirmSchool = () => {
-      context.emit("confirm", schools[schoolIndex]);
+      context.emit("confirm", schools[schoolIndex.value]);
       context.emit("close", false);
     };
     return {

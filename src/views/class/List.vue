@@ -2,8 +2,8 @@
   <div>
     <div class="search-box">
       <div class="search-content" v-if="!showSearch">
-        <div class="xq-show">
-          <span>全部校区</span>
+        <div class="xq-show" @click="toggleShowSchool(true)">
+          <span>{{ state.school }}</span>
           <van-icon name="arrow-down" color="#666" />
         </div>
         <div class="search-body">
@@ -42,19 +42,30 @@
         <van-button class="btn" round type="primary">新增班级</van-button>
       </div>
     </div>
-    <select-filter :showMode="showFilter" @close="toggleShowFilter(false)" />
+    <select-filter
+      :showMode="showFilter"
+      @close="toggleShowFilter"
+      @confirm="confirmFilter"
+    />
+    <school-filter
+      :showMode="showSchool"
+      @close="toggleShowSchool"
+      @confirm="confirmSchool"
+    />
   </div>
 </template>
 
 <script>
 import { Button, Icon, Search } from "vant";
-import { defineComponent, ref } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import SelectFilter from "../../components/SelectFilter.vue";
+import SchoolFilter from "../../components/SchoolFilter.vue";
 
 export default defineComponent({
   name: "Me",
   components: {
     SelectFilter,
+    SchoolFilter,
     [Button.name]: Button,
     [Search.name]: Search,
     [Icon.name]: Icon,
@@ -62,7 +73,11 @@ export default defineComponent({
   setup() {
     const searchKey = ref("");
     const showFilter = ref(false);
+    const showSchool = ref(false);
     const showSearch = ref(false);
+    const state = reactive({
+      school: "全部校区",
+    });
 
     const toggleShowFilter = (value) => {
       showFilter.value = value;
@@ -70,12 +85,34 @@ export default defineComponent({
     const toggleShowSearch = (value) => {
       showSearch.value = value;
     };
+    const toggleShowSchool = (value) => {
+      showSchool.value = value;
+    };
+    const confirmSchool = (value) => {
+      if (value) {
+        state.school = value;
+      } else {
+        state.school = "全部校区";
+      }
+    };
+    const confirmFilter = (value) => {
+      if (value.school) {
+        state.school = value.school;
+      } else {
+        state.school = "全部校区"
+      }
+    };
     return {
+      state,
       searchKey,
       showFilter,
+      showSchool,
       showSearch,
       toggleShowFilter,
       toggleShowSearch,
+      toggleShowSchool,
+      confirmSchool,
+      confirmFilter
     };
   },
 });
